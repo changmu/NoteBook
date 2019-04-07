@@ -10,7 +10,7 @@
 行为的实现不应该跟鸭子类型耦合。因为不同的鸭子对应的行为可能相同，可能不同，如果完全相同，则这些行为可以放在父类中，比如swim，如果完全不同，倒是可以放在子类实现。既然不满足这两点，行为就应当拆出来，做成可以灵活更改的变量。
 
 ### UML类图
-![](https://github.com/changmu/NoteBook/blob/master/DesignPattern/01_strage_pattern/src/uml.png?raw=true)
+![UML类图](https://github.com/changmu/NoteBook/blob/master/DesignPattern/01_strage_pattern/src/uml.png?raw=true)
 
 
 ### 代码
@@ -129,3 +129,13 @@ func main() {
 }
 
 ```
+
+### 定义
+strage pattern, 策略模式: 定义了一组算法，使其可以互相替换，将行为与类型解耦。
+
+### 扩展
+相比于继承，组合能带来更灵活的复用能力，可在运行时动态地改变行为，has-a关系要优于is-a关系。
+
+### 原则
+针对接口编程，不针对实现编程
+多用组合，少用继承
