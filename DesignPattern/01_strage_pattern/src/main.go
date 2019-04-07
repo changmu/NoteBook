@@ -109,4 +109,6 @@ func main() {
 	mallard.PeformQuack()
 	mallard.SetFly(new(FlyWithWings))
 	mallard.PeformFly()
+	mallard.SetFly(nil)
+	mallard.PeformFly()
 }
