@@ -9,7 +9,7 @@ interface Observer {
 }
 Subject "1" --> "n" Observer
 
-note left of Subject: Observer UML
+note left of Subject: Observer Pattern UML
 
 class WeatherData {
     RegisterObserver()
