@@ -1,0 +1,58 @@
+class Duck {
+    FlyBehavior flyBehavior_
+    QuackBehavior quackBehavior_
+
+    Swim()
+    Display()
+    PerformFlyBehavior()
+    SetFlyBehavior()
+    PerformQuackBehavior()
+    SetQuackBehavior()
+}
+
+class ReadHeadDuck {
+    Display()
+}
+Duck <|-- ReadHeadDuck
+
+class MallardDuck {
+    Display()
+}
+Duck <|-- MallardDuck
+
+
+interface FlyBehavior {
+    fly()
+}
+Duck --> FlyBehavior
+
+class FlyWithWings {
+    fly()
+}
+FlyBehavior <|.. FlyWithWings
+
+class FlyNoWay {
+    fly()
+}
+FlyBehavior <|.. FlyNoWay
+
+
+interface QuackBehavior {
+    quack()
+}
+Duck --> QuackBehavior
+
+class Quack {
+    quack()
+}
+QuackBehavior <|.. Quack
+
+class Squeak {
+    quack()
+}
+QuackBehavior <|.. Squeak
+
+class MuteQuack {
+    quack()
+}
+QuackBehavior <|.. MuteQuack
