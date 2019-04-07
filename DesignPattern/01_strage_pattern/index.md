@@ -10,7 +10,7 @@
 行为的实现不应该跟鸭子类型耦合。因为不同的鸭子对应的行为可能相同，可能不同，如果完全相同，则这些行为可以放在父类中，比如swim，如果完全不同，倒是可以放在子类实现。既然不满足这两点，行为就应当拆出来，做成可以灵活更改的变量。
 
 ### UML类图
-!(https://github.com/changmu/NoteBook/blob/master/DesignPattern/01_strage_pattern/src/uml.png?raw=true)
+![](https://github.com/changmu/NoteBook/blob/master/DesignPattern/01_strage_pattern/src/uml.png?raw=true)
 
 
 ### 代码
