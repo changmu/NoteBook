@@ -1,0 +1,56 @@
+interface Subject {
+    RegisterObserver()
+    RemoveObserver()
+    NotifyObserver()
+}
+
+interface Observer {
+    Update()
+}
+Subject "1" --> "n" Observer
+
+note left of Subject: Observer UML
+
+class WeatherData {
+    RegisterObserver()
+    RemoveObserver()
+    NotifyObserver()
+
+    GetTemperature()
+    GetHumidity()
+    GetPressure()
+    MeasurementsChanged()
+}
+Subject <|.. WeatherData
+
+interface DisplayElement {
+    Display()
+}
+
+class CurrentConditionsDisplay {
+    Update()
+    Display()
+}
+DisplayElement <|.. CurrentConditionsDisplay
+Observer <|.. CurrentConditionsDisplay
+
+class StatisticsDisplay {
+    Update()
+    Display()
+}
+DisplayElement <|.. StatisticsDisplay
+Observer <|.. StatisticsDisplay
+
+class ThirdPartyDisplay {
+    Update()
+    Display()
+}
+DisplayElement <|.. ThirdPartyDisplay
+Observer <|.. ThirdPartyDisplay
+
+class ForecastDisplay {
+    Update()
+    Display()
+}
+DisplayElement <|.. ForecastDisplay
+Observer <|.. ForecastDisplay
