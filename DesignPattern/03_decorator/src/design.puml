@@ -4,30 +4,16 @@ interface Beverage {
     GetCost()
 }
 
-class Coffee1 {
+class Coffee {
     GetDescription()
     GetCost()
 }
-Beverage <|.. Coffee1
+Beverage <|.. Coffee
 
-class Coffee2 {
-    GetDescription()
-    GetCost()
-}
-Beverage <|.. Coffee2
-
-class DecoratorMilk {
+class Decorator {
     Beverage b
     GetDescription()
     GetCost()
 }
-Beverage <|.. DecoratorMilk
-
-class DecoratorSalt {
-    Beverage b
-    GetDescription()
-    GetCost()
-}
-Beverage <|.. DecoratorSalt
-
+Beverage <|.. Decorator
 @enduml

@@ -1,0 +1,12 @@
+@startuml
+start
+:do something;
+if (cond1?) then (是)
+    :do something;
+else (否)
+    :do something;
+endif
+:do something;
+stop
+@enduml
+

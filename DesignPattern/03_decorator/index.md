@@ -11,7 +11,7 @@
 将咖啡和调料从静态绑定换成动态组合
 
 ### UML类图
-![design](https://www.plantuml.com/plantuml/png/0/SoWkIImgAStDuShCAqajIajCJbLmIYrBBKfCJrMevb800lVK4fVKukIYp8AIpFmy3KsOe7D-SGcGLyl5bPoJM5oiu9oVbfQQQaYiBhWjDZLwUZ3Dg6OPKMAM4SmibzJa_AB4almYtyoSRAY9S0r9v5Y0OYA6DS69EINKjGPa8XUNGsfU2Z2Y0000 "design")
+![design](https://www.plantuml.com/plantuml/png/0/SoWkIImgAStDuShCAqajIajCJbLmIYrBBKfCJrMevb800lVK4fVKukIYp8AIpFmy3KsOe7D-SGcGLyl5bPoJM5oiu9oVbfPAj2Qu9JOrUdfGlJ2JN5AJyuiII_ABe8R1rIQHOpRSD2w7rBmKe5S1 "design")
 
 
 ### 代码
