@@ -1,3 +1,4 @@
+@startuml
 class Duck {
     FlyBehavior flyBehavior_
     QuackBehavior quackBehavior_
@@ -56,3 +57,4 @@ class MuteQuack {
     quack()
 }
 QuackBehavior <|.. MuteQuack
+@enduml

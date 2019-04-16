@@ -1,8 +1,12 @@
-interface Subject {
-    RegisterObserver()
-    RemoveObserver()
-    NotifyObserver()
+@startuml
+interface Beverage {
+    GetDescription()
+    GetCost()
 }
+
+
+
+
 
 interface Observer {
     Update()
@@ -54,3 +58,4 @@ class ForecastDisplay {
 }
 DisplayElement <|.. ForecastDisplay
 Observer <|.. ForecastDisplay
+@enduml

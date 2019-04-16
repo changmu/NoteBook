@@ -1,20 +1,3 @@
-### 背景
-1. 设计一个天气状态服务器，实时监测温度、湿度和气压，并将最新状态同步给订阅者。
-2. 旧设计方案：将每个订阅者的更新代码写死到服务端代码里。
-
-### 问题
-1. 高耦合，服务端代码需要知道订阅者的实现
-2. 违反了开闭原则，新加订阅者需要修改服务端代码
-
-### 解决方案
-约定发布者跟订阅者之间的接口，抽象出注册、注销、通知这三个方法，发布者暴露出这三个方法给订阅者使用即可
-
-### UML类图
-![design](https://www.plantuml.com/plantuml/png/0/hL3BJiCm4BpxAwoSuD1AN17Yal8uK8XeAyxRPDCO9NQqtbIAW7_7f4vJ79LByCspipEpepGZvP2YN3NRTqnPVWZftYlkb7MZbwr5sYDTN7guCdiCm6V3AczFm2yXr56tnxtmfiw0iIFrZj5L96UpMndfwCWMGXj6MMBEqkHzkEj1BG5s3bfkbaz2f2LOAzyGk41Q0CD_ND6X3yXhh6eau8RGKntus5GgKzmEI49exS1P8lpyAjHiumBq3hDVHzzypkUdYKyhMoXRbz3UbTswlyM3XteF1ySDaIF4HhieocZhEM7LuNgWtqKvfoMEZVzDyv5M3EmgL-cKB2EH8CHuxjtNXQ8i0U9sWlj8970VpxtxlI5CmV84xq0YS0wctm00 "design")
-
-
-### 代码
-```go
 package main
 
 import "fmt"
@@ -126,15 +109,3 @@ func main() {
 	weatherData.SetMeasurements(10, 20, 30)
 	weatherData.SetMeasurements(100, 200, 300)
 }
-```
-
-### 定义
-Observer, 观察者模式：定义了对象之间的一对多依赖，当主题对象改变时，订阅者都将收到通知并更新。
-
-### 扩展
-订阅者模式可以说是一种单向依赖，订阅者依赖于发布者的状态获取接口，算是依赖倒置的应用，变化点在于订阅者
-
-### 原则
-- 为交互对象之间的松耦设计合而努力
-- 开闭原则
-- 针对接口编程，不针对实现编程

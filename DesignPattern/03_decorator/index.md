@@ -1,16 +1,17 @@
 ### 背景
-1. 设计一个天气状态服务器，实时监测温度、湿度和气压，并将最新状态同步给订阅者。
-2. 旧设计方案：将每个订阅者的更新代码写死到服务端代码里。
+1. 设计一个咖啡饮料订单系统，能够获取每一种饮料的价格和描述
+2. 饮料由咖啡和调料组成，每种咖啡可以搭配多种调料
+2. 现有的设计：每种咖啡和调料的组合都生成一个类，单独生成价格和描述
 
 ### 问题
-1. 高耦合，服务端代码需要知道订阅者的实现
-2. 违反了开闭原则，新加订阅者需要修改服务端代码
+1. 高耦合，咖啡和调料静态绑定后直接导致类爆炸
+2. 类爆炸直接导致一系列的开发维护问题
 
 ### 解决方案
-约定发布者跟订阅者之间的接口，抽象出注册、注销、通知这三个方法，发布者暴露出这三个方法给订阅者使用即可
+将咖啡和调料同静态绑定换成动态组合
 
 ### UML类图
-![design](https://www.plantuml.com/plantuml/png/0/hL3BJiCm4BpxAwoSuD1AN17Yal8uK8XeAyxRPDCO9NQqtbIAW7_7f4vJ79LByCspipEpepGZvP2YN3NRTqnPVWZftYlkb7MZbwr5sYDTN7guCdiCm6V3AczFm2yXr56tnxtmfiw0iIFrZj5L96UpMndfwCWMGXj6MMBEqkHzkEj1BG5s3bfkbaz2f2LOAzyGk41Q0CD_ND6X3yXhh6eau8RGKntus5GgKzmEI49exS1P8lpyAjHiumBq3hDVHzzypkUdYKyhMoXRbz3UbTswlyM3XteF1ySDaIF4HhieocZhEM7LuNgWtqKvfoMEZVzDyv5M3EmgL-cKB2EH8CHuxjtNXQ8i0U9sWlj8970VpxtxlI5CmV84xq0YS0wctm00 "design")
+
 
 
 ### 代码
