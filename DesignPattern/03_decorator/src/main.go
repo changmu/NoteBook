@@ -2,110 +2,55 @@ package main
 
 import "fmt"
 
-// 定义接口
-type Subject interface {
-	RegisterObserver(o Observer)
-	RemoveObserver(o Observer)
-	NotifyObserver()
+type Beverage interface {
+	GetDescription() string
+	GetCost() float64
 }
 
-type Observer interface {
-	Update()
+type Coffee struct {
+	desc string
+	cost float64
 }
 
-type DisplayElement interface {
-	Display()
+func NewCoffee(desc string, cost float64) *Coffee {
+	return &Coffee{desc, cost}
 }
 
-type WeatherData struct {
-	observers []Observer
-
-	temperature float64
-	humidity    float64
-	pressure    float64
+func (c *Coffee) GetDescription() string {
+	return c.desc
 }
 
-func NewWeatherData() *WeatherData {
-	return &WeatherData{}
+func (c *Coffee) GetCost() float64 {
+	return c.cost
 }
 
-func (w *WeatherData) RegisterObserver(o Observer) {
-	w.observers = append(w.observers, o)
-	fmt.Printf("observer:%p registered.\n", o)
+type Decorator struct {
+	b Beverage
+	Coffee
 }
 
-func (w *WeatherData) RemoveObserver(o Observer) {
-	for idx, item := range w.observers {
-		if item == o {
-			w.observers = append(w.observers[:idx], w.observers[idx+1:]...) // attention
-			fmt.Printf("observer:%p removed.\n", o)
-			return
-		}
+func NewDecorator(desc string, cost float64, b Beverage) *Decorator {
+	return &Decorator{
+		b:      b,
+		Coffee: Coffee{desc: desc, cost: cost},
 	}
 }
 
-func (w *WeatherData) NotifyObserver() {
-	for _, item := range w.observers {
-		item.Update()
-	}
+func (d *Decorator) GetDescription() string {
+	return d.b.GetDescription() + ", " + d.desc
 }
 
-func (w *WeatherData) GetTemperature() float64 {
-	return w.temperature
-}
-
-func (w *WeatherData) GetHumidity() float64 {
-	return w.humidity
-}
-
-func (w *WeatherData) GetPressure() float64 {
-	return w.pressure
-}
-
-func (w *WeatherData) MeasurementsChanged() {
-	w.NotifyObserver()
-}
-
-func (w *WeatherData) SetMeasurements(t, h, p float64) {
-	w.temperature = t
-	w.humidity = h
-	w.pressure = p
-	w.MeasurementsChanged()
-}
-
-// 订阅者
-type CurrentConditionsDisplay struct {
-	temperature float64
-	humidity    float64
-	// pressure    float64
-	weatherData *WeatherData
-}
-
-func NewCurrentConditionsDisplay(weatherData *WeatherData) *CurrentConditionsDisplay {
-	d := &CurrentConditionsDisplay{
-		weatherData: weatherData,
-	}
-	weatherData.RegisterObserver(d)
-	return d
-}
-
-func (d *CurrentConditionsDisplay) Update() {
-	d.temperature = d.weatherData.GetTemperature()
-	d.humidity = d.weatherData.GetHumidity()
-	d.Display()
-}
-
-func (d *CurrentConditionsDisplay) Display() {
-	fmt.Printf("current conditions: temperature:%v and humidity:%v\n", d.temperature, d.humidity)
+func (d *Decorator) GetCost() float64 {
+	return d.b.GetCost() + d.cost
 }
 
 func main() {
-	weatherData := NewWeatherData()
-	currentConditionsDisplay := NewCurrentConditionsDisplay(weatherData)
-	defer weatherData.RemoveObserver(currentConditionsDisplay)
-	currentConditionsDisplay2 := NewCurrentConditionsDisplay(weatherData)
-	defer weatherData.RemoveObserver(currentConditionsDisplay2)
+	b1 := NewDecorator("milk", .1, NewDecorator("salt", .2, NewCoffee("coffee1", 1000)))
+	fmt.Printf("b1:%#v cost: $%#v\n", b1.GetDescription(), b1.GetCost())
 
-	weatherData.SetMeasurements(10, 20, 30)
-	weatherData.SetMeasurements(100, 200, 300)
+	var b2 Beverage = NewCoffee("coffee2", 2000)
+	b2 = NewDecorator("milk", .2, b2)
+	b2 = NewDecorator("milk", .2, b2)
+	b2 = NewDecorator("salt", 1.0, b2)
+	fmt.Printf("b2:%#v cost: $%#v\n", b2.GetDescription(), b2.GetCost())
 }

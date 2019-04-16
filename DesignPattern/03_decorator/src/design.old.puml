@@ -1,0 +1,44 @@
+@startuml
+abstract class Beverage {
+    description string
+    cost double
+    GetDescription()
+    GetCost()
+}
+note right of Beverage: 抽象组件
+
+class Coffee1 {
+    GetDescription()
+    GetCost()
+}
+Beverage <|-- Coffee1
+
+class Coffee2 {
+    GetDescription()
+    GetCost()
+}
+Beverage <|-- Coffee2
+
+abstract class Decorator {
+    GetDescription()
+    GetCost()
+}
+Beverage <|-- Decorator
+Beverage <.. Decorator
+note top of Decorator: 抽象装饰者
+
+class DecoratorMilk {
+    Beverage b
+    GetDescription()
+    GetCost()
+}
+Decorator <|-- DecoratorMilk
+
+class DecoratorSalt {
+    Beverage b
+    GetDescription()
+    GetCost()
+}
+Decorator <|-- DecoratorSalt
+
+@enduml

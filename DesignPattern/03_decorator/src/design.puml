@@ -4,58 +4,30 @@ interface Beverage {
     GetCost()
 }
 
-
-
-
-
-interface Observer {
-    Update()
+class Coffee1 {
+    GetDescription()
+    GetCost()
 }
-Subject "1" --> "n" Observer
+Beverage <|.. Coffee1
 
-note left of Subject: Observer Pattern UML
-
-class WeatherData {
-    RegisterObserver()
-    RemoveObserver()
-    NotifyObserver()
-
-    GetTemperature()
-    GetHumidity()
-    GetPressure()
-    MeasurementsChanged()
+class Coffee2 {
+    GetDescription()
+    GetCost()
 }
-Subject <|.. WeatherData
+Beverage <|.. Coffee2
 
-interface DisplayElement {
-    Display()
+class DecoratorMilk {
+    Beverage b
+    GetDescription()
+    GetCost()
 }
+Beverage <|.. DecoratorMilk
 
-class CurrentConditionsDisplay {
-    Update()
-    Display()
+class DecoratorSalt {
+    Beverage b
+    GetDescription()
+    GetCost()
 }
-DisplayElement <|.. CurrentConditionsDisplay
-Observer <|.. CurrentConditionsDisplay
+Beverage <|.. DecoratorSalt
 
-class StatisticsDisplay {
-    Update()
-    Display()
-}
-DisplayElement <|.. StatisticsDisplay
-Observer <|.. StatisticsDisplay
-
-class ThirdPartyDisplay {
-    Update()
-    Display()
-}
-DisplayElement <|.. ThirdPartyDisplay
-Observer <|.. ThirdPartyDisplay
-
-class ForecastDisplay {
-    Update()
-    Display()
-}
-DisplayElement <|.. ForecastDisplay
-Observer <|.. ForecastDisplay
 @enduml
