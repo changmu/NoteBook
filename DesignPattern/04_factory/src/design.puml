@@ -1,0 +1,19 @@
+@startuml
+interface Creator {
+    FactoryMethod()
+    AnOperation() // has default implemention
+}
+
+class ConcreteCreator {
+    FactoryMethod()
+}
+Creator <|.. ConcreteCreator
+
+interface Product {
+}
+
+class ConcreteProduct {
+}
+Product <|.. ConcreteProduct
+ConcreteCreator --> ConcreteProduct
+@enduml

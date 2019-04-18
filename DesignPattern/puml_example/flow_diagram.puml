@@ -1,10 +1,17 @@
 @startuml
+' skinparam monochrome true
+' skinparam handwritten true
 start
 :do something;
-if (cond1?) then (是)
+if (cond1?) then (yes)
     :do something;
-else (否)
+elseif (abc) then (yes)
     :do something;
+elseif (abcd) then (yes)
+    :do something;
+else (no)
+    :do something;
+    stop
 endif
 :do something;
 stop
